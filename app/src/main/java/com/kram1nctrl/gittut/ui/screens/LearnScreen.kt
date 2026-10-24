@@ -197,6 +197,7 @@ private fun HeroCard(
                 trackColor = Color.White.copy(alpha = 0.22f),
                 strokeCap = StrokeCap.Round,
                 gapSize = 0.dp,
+                drawStopIndicator = {},
             )
             Spacer(Modifier.height(8.dp))
             Row(verticalAlignment = Alignment.CenterVertically) {
@@ -300,6 +301,7 @@ private fun ChapterCard(
                     trackColor = MaterialTheme.colorScheme.surfaceVariant,
                     strokeCap = StrokeCap.Round,
                     gapSize = 0.dp,
+                    drawStopIndicator = {},
                 )
                 Spacer(Modifier.width(10.dp))
                 Text(

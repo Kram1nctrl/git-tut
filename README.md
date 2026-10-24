@@ -25,7 +25,10 @@ Requirements: Android 8.0 (API 26) or newer.
 
 | Learn | Lesson | Quiz | Cheat sheet |
 | --- | --- | --- | --- |
+| ![Learn screen](docs/screenshots/learn.png) | ![Lesson screen](docs/screenshots/lesson.png) | ![Quiz screen](docs/screenshots/quiz.png) | ![Cheat sheet](docs/screenshots/cheatsheet.png) |
 | Chapter progress and a continue button | Markdown lessons with copyable code | Instant feedback and explanations | Filterable command reference |
+
+Light and dark themes follow the system setting.
 
 ## Build from source
 

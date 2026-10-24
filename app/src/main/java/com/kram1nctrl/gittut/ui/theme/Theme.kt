@@ -8,6 +8,7 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
 // Git-inspired brand palette.
@@ -42,8 +43,20 @@ private val LightColors = lightColorScheme(
     onSurface = Ink,
     surfaceVariant = Color(0xFFF2E7E2),
     onSurfaceVariant = InkSoft,
+    surfaceTint = GitOrange,
+    surfaceDim = Color(0xFFE8DAD4),
+    surfaceBright = Color(0xFFFFFDFC),
+    surfaceContainerLowest = Color(0xFFFFFFFF),
+    surfaceContainerLow = Color(0xFFFFF9F6),
+    surfaceContainer = Color(0xFFF8EEEA),
+    surfaceContainerHigh = Color(0xFFF3E7E2),
+    surfaceContainerHighest = Color(0xFFEDE0DA),
+    inverseSurface = Color(0xFF362F2C),
+    inverseOnSurface = Color(0xFFFBEEE9),
+    inversePrimary = GitOrangeLight,
     outline = Color(0xFF8C7167),
     outlineVariant = Color(0xFFE3D3CC),
+    scrim = Color(0xFF000000),
     error = Color(0xFFB3261E),
     onError = Color.White,
     errorContainer = Color(0xFFF9DEDC),
@@ -69,8 +82,20 @@ private val DarkColors = darkColorScheme(
     onSurface = Color(0xFFF1E5E0),
     surfaceVariant = Color(0xFF2C2523),
     onSurfaceVariant = Color(0xFFD8C2B8),
+    surfaceTint = GitOrangeLight,
+    surfaceDim = Color(0xFF161211),
+    surfaceBright = Color(0xFF3A3230),
+    surfaceContainerLowest = Color(0xFF100D0C),
+    surfaceContainerLow = Color(0xFF1A1615),
+    surfaceContainer = Color(0xFF1E1918),
+    surfaceContainerHigh = Color(0xFF292321),
+    surfaceContainerHighest = Color(0xFF342C2A),
+    inverseSurface = Color(0xFFF1E5E0),
+    inverseOnSurface = Color(0xFF332D2A),
+    inversePrimary = GitOrange,
     outline = Color(0xFFA08B81),
     outlineVariant = Color(0xFF443936),
+    scrim = Color(0xFF000000),
     error = Color(0xFFF2B8B5),
     onError = Color(0xFF601410),
     errorContainer = Color(0xFF8C1D18),
@@ -81,7 +106,7 @@ private val AppTypography = Typography(
     bodyLarge = TextStyle(fontSize = 16.sp, lineHeight = 25.sp),
     bodyMedium = TextStyle(fontSize = 14.sp, lineHeight = 21.sp),
     bodySmall = TextStyle(fontSize = 12.sp, lineHeight = 17.sp),
-    titleMedium = TextStyle(fontSize = 16.sp, lineHeight = 22.sp, fontWeight = androidx.compose.ui.text.font.FontWeight.SemiBold),
+    titleMedium = TextStyle(fontSize = 16.sp, lineHeight = 22.sp, fontWeight = FontWeight.SemiBold),
 )
 
 @Composable

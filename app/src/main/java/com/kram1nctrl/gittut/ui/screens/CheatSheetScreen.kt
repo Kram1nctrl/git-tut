@@ -1,7 +1,6 @@
 package com.kram1nctrl.gittut.ui.screens
 
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -16,7 +15,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
@@ -160,34 +158,33 @@ private fun CheatRow(item: CheatItem) {
         border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant),
     ) {
         Column(Modifier.padding(12.dp)) {
+            Surface(
+                color = CodeBackground,
+                shape = RoundedCornerShape(8.dp),
+                modifier = Modifier.fillMaxWidth(),
+            ) {
+                Text(
+                    text = item.command,
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 13.sp,
+                    lineHeight = 18.sp,
+                    color = CodeText,
+                    modifier = Modifier.padding(horizontal = 10.dp, vertical = 7.dp),
+                )
+            }
+            Spacer(Modifier.height(4.dp))
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Surface(
-                    color = CodeBackground,
-                    shape = RoundedCornerShape(8.dp),
-                    modifier = Modifier.weight(1f, fill = false),
-                ) {
-                    Text(
-                        text = item.command,
-                        fontFamily = FontFamily.Monospace,
-                        fontSize = 13.sp,
-                        color = CodeText,
-                        maxLines = 1,
-                        modifier = Modifier
-                            .horizontalScroll(rememberScrollState())
-                            .padding(horizontal = 10.dp, vertical = 7.dp),
-                    )
-                }
+                Text(
+                    text = item.description,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.weight(1f),
+                )
                 Spacer(Modifier.width(6.dp))
                 TextButton(onClick = { copy(item.command) }) {
                     Text("Copy", style = MaterialTheme.typography.labelMedium)
                 }
             }
-            Spacer(Modifier.height(4.dp))
-            Text(
-                text = item.description,
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
         }
     }
 }

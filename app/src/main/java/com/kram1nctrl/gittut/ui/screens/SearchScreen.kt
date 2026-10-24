@@ -172,6 +172,7 @@ private fun EmptySearchContent(onSuggestion: (String) -> Unit) {
                     label = { Text(suggestion) },
                 )
             }
+            Spacer(Modifier.width(16.dp))
         }
     }
 }

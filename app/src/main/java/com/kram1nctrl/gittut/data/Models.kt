@@ -24,17 +24,15 @@ data class LessonContent(
     val meta: LessonMeta,
     val blocks: List<Block>,
 ) {
-    /** Plain text used by search, including code samples. */
+    /** Plain text used by search, including headings and code samples. */
     val plainText: String by lazy {
-        blocks.joinToString(" ") { block ->
-            when (block) {
-                is Block.Heading -> block.text
-                is Block.Paragraph -> block.text
-                is Block.Code -> block.code
-                is Block.Callout -> block.text
-                is Block.Bullets -> block.items.joinToString(" ")
-            }
-        }
+        blocks.joinToString("\n") { it.plainText() }
+    }
+
+    /** Body text without headings, used to build readable search snippets. */
+    val searchText: String by lazy {
+        blocks.filterNot { it is Block.Heading }
+            .joinToString("\n") { it.plainText() }
     }
 }
 
@@ -51,6 +49,14 @@ sealed interface Block {
     data class Code(val code: String, val language: String?) : Block
     data class Callout(val text: String, val kind: CalloutKind) : Block
     data class Bullets(val items: List<String>, val ordered: Boolean) : Block
+}
+
+private fun Block.plainText(): String = when (this) {
+    is Block.Heading -> text
+    is Block.Paragraph -> text
+    is Block.Code -> code
+    is Block.Callout -> text
+    is Block.Bullets -> items.joinToString(" ")
 }
 
 enum class CalloutKind { TIP, WARN, NOTE }

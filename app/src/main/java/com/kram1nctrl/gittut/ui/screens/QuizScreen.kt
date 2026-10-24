@@ -144,6 +144,7 @@ fun QuizScreen(
                         trackColor = MaterialTheme.colorScheme.surfaceVariant,
                         strokeCap = StrokeCap.Round,
                         gapSize = 0.dp,
+                        drawStopIndicator = {},
                     )
                     Spacer(Modifier.height(4.dp))
                     Text(

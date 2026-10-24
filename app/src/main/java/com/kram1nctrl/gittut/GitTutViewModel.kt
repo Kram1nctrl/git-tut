@@ -107,13 +107,27 @@ class GitTutViewModel(application: Application) : AndroidViewModel(application) 
     }
 
     private fun snippet(lesson: LessonContent, query: String): String {
-        val text = lesson.plainText
+        val text = lesson.searchText
         val index = text.indexOf(query, ignoreCase = true)
         if (index < 0) return lesson.meta.summary.ifBlank { text.take(120) }
-        val start = (index - 45).coerceAtLeast(0)
-        val end = (index + query.length + 75).coerceAtMost(text.length)
-        val prefix = if (start > 0) "…" else ""
-        val suffix = if (end < text.length) "…" else ""
+
+        val lineStart = text.lastIndexOf('\n', index).let { if (it < 0) 0 else it + 1 }
+        val lineEnd = text.indexOf('\n', index).let { if (it < 0) text.length else it }
+
+        var start = (index - 45).coerceAtLeast(lineStart)
+        if (start > lineStart) {
+            val nextSpace = text.indexOf(' ', start)
+            if (nextSpace in start until index) start = nextSpace + 1
+        }
+
+        var end = (index + query.length + 80).coerceAtMost(lineEnd)
+        if (end < lineEnd) {
+            val lastSpace = text.lastIndexOf(' ', end)
+            if (lastSpace > index + query.length) end = lastSpace
+        }
+
+        val prefix = if (start > lineStart) "…" else ""
+        val suffix = if (end < lineEnd) "…" else ""
         return prefix + text.substring(start, end).replace(Regex("\\s+"), " ").trim() + suffix
     }
 }
