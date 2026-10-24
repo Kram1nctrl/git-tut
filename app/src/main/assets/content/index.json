@@ -1,0 +1,484 @@
+{
+  "chapters": [
+    {
+      "id": "ch01",
+      "number": 1,
+      "title": "Getting Started",
+      "subtitle": "What Git is, what GitHub adds, and your very first commit.",
+      "emoji": "🚀",
+      "lessons": [
+        { "id": "what-is-git", "title": "What is Git?", "summary": "Version control, snapshots, and the three ideas behind every repository.", "minutes": 5, "file": "01-what-is-git.md" },
+        { "id": "git-vs-github", "title": "Git vs GitHub", "summary": "The engine and the garage: why they are not the same thing.", "minutes": 4, "file": "02-git-vs-github.md" },
+        { "id": "install-and-setup", "title": "Install and configure Git", "summary": "Set your name, email, editor, and sensible defaults.", "minutes": 6, "file": "03-install-and-setup.md" },
+        { "id": "your-first-repo", "title": "Your first repository", "summary": "Init, add, commit, and read your first log.", "minutes": 6, "file": "04-your-first-repo.md" },
+        { "id": "three-trees", "title": "The three places your work lives", "summary": "Working directory, staging area, and repository explained.", "minutes": 5, "file": "05-three-trees.md" }
+      ],
+      "quiz": [
+        {
+          "q": "What does git commit actually do?",
+          "options": [
+            "Records the staged changes as a snapshot in local history",
+            "Uploads your files to GitHub",
+            "Creates a new branch automatically",
+            "Deletes all unstaged changes"
+          ],
+          "answer": 0,
+          "explain": "A commit is a local snapshot of the staging area. Uploading happens later with git push."
+        },
+        {
+          "q": "Which statement about Git and GitHub is correct?",
+          "options": [
+            "Git is version control software; GitHub hosts Git repositories and adds collaboration tools",
+            "They are two names for the same product",
+            "GitHub works without Git installed",
+            "Git can only be used with GitHub"
+          ],
+          "answer": 0,
+          "explain": "Git runs locally and works offline. GitHub is a hosting and collaboration platform built around Git."
+        },
+        {
+          "q": "Which command sets the email attached to your commits for every repository?",
+          "options": [
+            "git config --global user.email \"you@example.com\"",
+            "git email --set \"you@example.com\"",
+            "git init --email \"you@example.com\"",
+            "git remote add email \"you@example.com\""
+          ],
+          "answer": 0,
+          "explain": "git config --global writes to your user-level config, so the value applies to all repositories."
+        },
+        {
+          "q": "What is the staging area for?",
+          "options": [
+            "Choosing exactly which changes go into the next commit",
+            "Storing backups of your repository on GitHub",
+            "Keeping a list of deleted branches",
+            "Temporarily hiding files from your editor"
+          ],
+          "answer": 0,
+          "explain": "Staging lets you assemble a commit from selected changes, even within the same file."
+        }
+      ]
+    },
+    {
+      "id": "ch02",
+      "number": 2,
+      "title": "Everyday Git",
+      "subtitle": "The commands you will use every single day.",
+      "emoji": "📝",
+      "lessons": [
+        { "id": "status-and-diff", "title": "Status and diff", "summary": "Understand what changed, what is staged, and what is untracked.", "minutes": 6, "file": "06-status-and-diff.md" },
+        { "id": "staging-and-committing", "title": "Staging and committing", "summary": "Build clean commits with messages people can use.", "minutes": 6, "file": "07-staging-and-committing.md" },
+        { "id": "history", "title": "Reading history", "summary": "Log, show, blame, and searching through the past.", "minutes": 6, "file": "08-history.md" },
+        { "id": "gitignore", "title": "Ignoring files", "summary": "Keep build output, secrets, and editor junk out of Git.", "minutes": 5, "file": "09-gitignore.md" },
+        { "id": "amend", "title": "Fixing the last commit", "summary": "Amend messages and forgotten files, and know when not to.", "minutes": 5, "file": "10-amend.md" }
+      ],
+      "quiz": [
+        {
+          "q": "Which command shows changes that are not staged yet?",
+          "options": [
+            "git diff",
+            "git diff --staged",
+            "git log -1",
+            "git status --staged"
+          ],
+          "answer": 0,
+          "explain": "git diff compares the working directory with the staging area. Add --staged to compare staging with the last commit."
+        },
+        {
+          "q": "Which command stages all changes, including brand-new files?",
+          "options": [
+            "git add -A",
+            "git add -u",
+            "git commit -a",
+            "git stash"
+          ],
+          "answer": 0,
+          "explain": "git add -A stages modifications, deletions, and untracked files. git add -u only stages tracked files."
+        },
+        {
+          "q": "You add build/ to .gitignore, but build output is still tracked. What happens?",
+          "options": [
+            "Nothing changes until you remove the files from the index with git rm --cached",
+            "Git deletes the folder from disk",
+            "Git stops tracking the files immediately",
+            "The next commit fails"
+          ],
+          "answer": 0,
+          "explain": ".gitignore only affects untracked files. Already-tracked files must be removed from the index."
+        },
+        {
+          "q": "When is git commit --amend safe?",
+          "options": [
+            "On a local commit that nobody else has pulled",
+            "On any commit, as long as you push afterwards",
+            "Only on merge commits",
+            "Only after enabling branch protection"
+          ],
+          "answer": 0,
+          "explain": "Amending rewrites the commit hash. Doing it on shared history forces everyone else to clean up."
+        }
+      ]
+    },
+    {
+      "id": "ch03",
+      "number": 3,
+      "title": "Branching",
+      "subtitle": "Work on several ideas at once without breaking anything.",
+      "emoji": "🌿",
+      "lessons": [
+        { "id": "what-is-a-branch", "title": "What is a branch?", "summary": "Pointers, HEAD, and why branching is cheap in Git.", "minutes": 5, "file": "11-what-is-a-branch.md" },
+        { "id": "create-switch", "title": "Create and switch branches", "summary": "git switch, naming conventions, and stashing before you move.", "minutes": 5, "file": "12-create-switch.md" },
+        { "id": "merging", "title": "Merging", "summary": "Fast-forwards, three-way merges, and merge strategies.", "minutes": 6, "file": "13-merging.md" },
+        { "id": "merge-conflicts", "title": "Resolving conflicts", "summary": "Read the markers, choose the right code, and finish the merge.", "minutes": 7, "file": "14-merge-conflicts.md" },
+        { "id": "delete-branches", "title": "Deleting and renaming", "summary": "Clean up branches locally and on the remote.", "minutes": 4, "file": "15-delete-branches.md" }
+      ],
+      "quiz": [
+        {
+          "q": "What is a Git branch, technically?",
+          "options": [
+            "A movable pointer to a commit",
+            "A full copy of the project folder",
+            "A separate repository on GitHub",
+            "A saved stash"
+          ],
+          "answer": 0,
+          "explain": "Branches are tiny: a name pointing at a commit. That is why creating one is instant."
+        },
+        {
+          "q": "Which command creates a branch and switches to it immediately?",
+          "options": [
+            "git switch -c feature/login",
+            "git branch feature/login",
+            "git merge feature/login",
+            "git checkout -- feature/login"
+          ],
+          "answer": 0,
+          "explain": "git switch -c creates and checks out the new branch in one step. git branch alone only creates it."
+        },
+        {
+          "q": "When can a merge be a fast-forward?",
+          "options": [
+            "When the target branch has not moved since the feature branch started",
+            "Only when both branches have new commits",
+            "Only if you pass --no-ff",
+            "When the branches have conflicting files"
+          ],
+          "answer": 0,
+          "explain": "A fast-forward simply slides the target pointer forward. If both sides moved, Git needs a three-way merge."
+        },
+        {
+          "q": "In a conflict, what does the ======= line separate?",
+          "options": [
+            "Your current branch's version and the incoming branch's version",
+            "Staged and unstaged changes",
+            "The commit message from the diff",
+            "Two different files"
+          ],
+          "answer": 0,
+          "explain": "Everything between <<<<<<< HEAD and ======= is yours; between ======= and >>>>>>> is the incoming side."
+        }
+      ]
+    },
+    {
+      "id": "ch04",
+      "number": 4,
+      "title": "GitHub and Remotes",
+      "subtitle": "Connect your local repository to the world.",
+      "emoji": "☁️",
+      "lessons": [
+        { "id": "remotes-and-origin", "title": "Remotes and origin", "summary": "Add, inspect, rename, and understand remote URLs.", "minutes": 5, "file": "16-remotes-and-origin.md" },
+        { "id": "clone", "title": "Cloning", "summary": "Copy a repository with its full history, and what clone sets up.", "minutes": 5, "file": "17-clone.md" },
+        { "id": "push-pull-fetch", "title": "Push, pull, fetch", "summary": "The three commands that sync your work, and when to use each.", "minutes": 7, "file": "18-push-pull-fetch.md" },
+        { "id": "authentication", "title": "Authentication", "summary": "Tokens, SSH keys, and the GitHub CLI login flow.", "minutes": 7, "file": "19-authentication.md" },
+        { "id": "readme-and-settings", "title": "README and repository settings", "summary": "Make a repository understandable and safe to contribute to.", "minutes": 6, "file": "20-readme-and-settings.md" }
+      ],
+      "quiz": [
+        {
+          "q": "What does git remote add origin <url> do?",
+          "options": [
+            "Stores a URL under the name origin; nothing is uploaded yet",
+            "Uploads your commits to GitHub",
+            "Clones the repository into the current folder",
+            "Creates a new GitHub account"
+          ],
+          "answer": 0,
+          "explain": "A remote is a named bookmark for a URL. You still need git push to send commits."
+        },
+        {
+          "q": "What is the difference between git fetch and git pull?",
+          "options": [
+            "pull fetches and then integrates into your branch; fetch only downloads",
+            "fetch uploads; pull downloads",
+            "pull only works on main",
+            "There is no difference"
+          ],
+          "answer": 0,
+          "explain": "fetch updates remote-tracking branches safely. pull is fetch plus merge (or rebase)."
+        },
+        {
+          "q": "Which credential does GitHub accept for HTTPS Git operations?",
+          "options": [
+            "A personal access token",
+            "Your GitHub account password",
+            "Your SSH private key",
+            "Your email address"
+          ],
+          "answer": 0,
+          "explain": "Password authentication for Git was removed. Use a fine-grained or classic personal access token, or switch to SSH."
+        },
+        {
+          "q": "What does the -u flag in git push -u origin main do?",
+          "options": [
+            "Sets the upstream so later pushes and pulls know the destination",
+            "Makes the repository public",
+            "Uploads tags as well",
+            "Forces the push"
+          ],
+          "answer": 0,
+          "explain": "-u sets tracking between your local branch and the remote branch, so plain git push and git pull work afterwards."
+        }
+      ]
+    },
+    {
+      "id": "ch05",
+      "number": 5,
+      "title": "Collaboration",
+      "subtitle": "Forks, pull requests, reviews, and issues.",
+      "emoji": "🤝",
+      "lessons": [
+        { "id": "fork-and-pr", "title": "Fork and pull request", "summary": "The full open-source contribution workflow, step by step.", "minutes": 8, "file": "21-fork-and-pr.md" },
+        { "id": "issues", "title": "Issues that get fixed", "summary": "Write useful bug reports and link them to code.", "minutes": 6, "file": "22-issues.md" },
+        { "id": "code-review", "title": "Code review", "summary": "Give and receive review feedback that improves the code.", "minutes": 7, "file": "23-code-review.md" },
+        { "id": "sync-fork", "title": "Keeping a fork in sync", "summary": "Fetch upstream changes without breaking your branches.", "minutes": 6, "file": "24-sync-fork.md" },
+        { "id": "protected-branches", "title": "Protected branches", "summary": "Require reviews and passing checks before merging to main.", "minutes": 6, "file": "25-protected-branches.md" }
+      ],
+      "quiz": [
+        {
+          "q": "What is the difference between a fork and a branch?",
+          "options": [
+            "A fork is a copy of the whole repository under your account; a branch lives inside one repository",
+            "A fork is local; a branch is on GitHub",
+            "They are identical",
+            "A branch can only be created from a fork"
+          ],
+          "answer": 0,
+          "explain": "Forking copies the repository to your account so you can push without permission on the original."
+        },
+        {
+          "q": "In the fork workflow, which remote do you push your feature branch to?",
+          "options": [
+            "origin, which points at your fork",
+            "upstream, which points at the original project",
+            "A remote named main",
+            "You push directly to the original repository"
+          ],
+          "answer": 0,
+          "explain": "You push to your fork (origin), then open a pull request from your branch to the original repository."
+        },
+        {
+          "q": "What does writing Closes #42 in a pull request description do?",
+          "options": [
+            "Closes issue 42 automatically when the pull request merges",
+            "Deletes pull request 42",
+            "Creates a new issue numbered 42",
+            "Blocks the merge until issue 42 is closed manually"
+          ],
+          "answer": 0,
+          "explain": "GitHub links the PR to the issue and closes it on merge into the default branch."
+        },
+        {
+          "q": "Why should you avoid committing directly to main in a fork?",
+          "options": [
+            "It makes syncing with upstream and keeping pull requests clean much harder",
+            "GitHub deletes forks that commit to main",
+            "Git does not allow commits on main",
+            "It automatically closes all your pull requests"
+          ],
+          "answer": 0,
+          "explain": "Keeping main as a clean mirror of upstream lets you fast-forward it and keeps each PR limited to its own branch."
+        }
+      ]
+    },
+    {
+      "id": "ch06",
+      "number": 6,
+      "title": "Undo and Rescue",
+      "subtitle": "Fix mistakes without losing your work.",
+      "emoji": "⏪",
+      "lessons": [
+        { "id": "restore", "title": "Restore files", "summary": "Discard edits, unstage files, and bring back old versions.", "minutes": 5, "file": "26-restore.md" },
+        { "id": "reset", "title": "Reset", "summary": "Soft, mixed, and hard: what each mode really does.", "minutes": 6, "file": "27-reset.md" },
+        { "id": "revert", "title": "Revert", "summary": "Undo a published commit without rewriting history.", "minutes": 5, "file": "28-revert.md" },
+        { "id": "stash", "title": "Stash", "summary": "Park unfinished work and come back to it later.", "minutes": 5, "file": "29-stash.md" },
+        { "id": "reflog", "title": "Reflog", "summary": "Recover commits after a bad reset, rebase, or deletion.", "minutes": 6, "file": "30-reflog.md" }
+      ],
+      "quiz": [
+        {
+          "q": "Which command discards unstaged edits to one file?",
+          "options": [
+            "git restore <file>",
+            "git reset <file>",
+            "git revert <file>",
+            "git clean <file>"
+          ],
+          "answer": 0,
+          "explain": "git restore rewrites the working file from the index. The change is lost, so stash first if unsure."
+        },
+        {
+          "q": "What does git reset --soft HEAD~1 do?",
+          "options": [
+            "Removes the last commit but keeps its changes staged",
+            "Deletes the last commit and all its changes",
+            "Creates a new commit that undoes the last one",
+            "Moves the changes to a stash"
+          ],
+          "answer": 0,
+          "explain": "Soft reset moves the branch pointer only. The changes remain staged, ready to recommit."
+        },
+        {
+          "q": "Which command is safe for undoing a commit that is already on a shared branch?",
+          "options": [
+            "git revert <hash>",
+            "git reset --hard <hash>",
+            "git commit --amend",
+            "git rebase -i"
+          ],
+          "answer": 0,
+          "explain": "Revert adds a new inverse commit, so nobody else's history is rewritten."
+        },
+        {
+          "q": "What can the reflog recover?",
+          "options": [
+            "Commits that existed locally, even after a reset or branch deletion",
+            "Uncommitted edits discarded with git restore",
+            "Commits from a teammate's clone",
+            "Deleted files that were never committed"
+          ],
+          "answer": 0,
+          "explain": "The reflog records HEAD movements. Uncommitted work was never in a commit, so it cannot be recovered this way."
+        }
+      ]
+    },
+    {
+      "id": "ch07",
+      "number": 7,
+      "title": "Power Moves",
+      "subtitle": "Rebase, cherry-pick, tags, and configuration.",
+      "emoji": "⚡",
+      "lessons": [
+        { "id": "rebase", "title": "Rebase", "summary": "Replay your commits onto a new base for a linear history.", "minutes": 7, "file": "31-rebase.md" },
+        { "id": "interactive-rebase", "title": "Interactive rebase", "summary": "Squash, reword, reorder, and drop commits before sharing.", "minutes": 8, "file": "32-interactive-rebase.md" },
+        { "id": "cherry-pick", "title": "Cherry-pick", "summary": "Copy one commit onto another branch, carefully.", "minutes": 5, "file": "33-cherry-pick.md" },
+        { "id": "tags-and-releases", "title": "Tags and releases", "summary": "Version your work and publish it on GitHub.", "minutes": 6, "file": "34-tags-and-releases.md" },
+        { "id": "aliases-and-config", "title": "Aliases and config", "summary": "Shortcuts, conditional identities, and settings worth changing.", "minutes": 6, "file": "35-aliases-and-config.md" }
+      ],
+      "quiz": [
+        {
+          "q": "What does rebasing a branch do?",
+          "options": [
+            "Replays its commits on top of another branch, creating new commit hashes",
+            "Merges another branch with a merge commit",
+            "Deletes the branch's history",
+            "Copies the branch to GitHub"
+          ],
+          "answer": 0,
+          "explain": "Rebase rewrites the branch's commits onto a new base, producing a linear history with new hashes."
+        },
+        {
+          "q": "What is the golden rule of rebasing?",
+          "options": [
+            "Do not rebase commits that other people have already pulled",
+            "Always rebase main before every commit",
+            "Only rebase merge commits",
+            "Rebase requires an internet connection"
+          ],
+          "answer": 0,
+          "explain": "Rebasing replaces commits. If others have them, their history diverges from yours."
+        },
+        {
+          "q": "When is cherry-pick the right tool?",
+          "options": [
+            "Copying a specific fix onto a release branch",
+            "Replacing a full feature merge",
+            "Undoing a pushed commit",
+            "Squashing all commits on a branch"
+          ],
+          "answer": 0,
+          "explain": "Cherry-pick copies selected commits. For whole features, merge or rebase instead."
+        },
+        {
+          "q": "What makes an annotated tag different from a lightweight tag?",
+          "options": [
+            "It stores a message, author, and date",
+            "It can only be created on GitHub",
+            "It moves with new commits",
+            "It cannot be pushed"
+          ],
+          "answer": 0,
+          "explain": "Annotated tags are full Git objects with metadata, which is why releases should use them."
+        }
+      ]
+    },
+    {
+      "id": "ch08",
+      "number": 8,
+      "title": "GitHub Beyond Code",
+      "subtitle": "Actions, Pages, the CLI, and staying secure.",
+      "emoji": "🌍",
+      "lessons": [
+        { "id": "actions", "title": "GitHub Actions", "summary": "Automate builds, tests, and releases with workflows.", "minutes": 8, "file": "36-actions.md" },
+        { "id": "pages", "title": "GitHub Pages", "summary": "Publish a static site straight from a repository.", "minutes": 6, "file": "37-pages.md" },
+        { "id": "cli-and-gists", "title": "GitHub CLI and gists", "summary": "Repos, pull requests, and snippets from the terminal.", "minutes": 6, "file": "38-cli-and-gists.md" },
+        { "id": "projects-and-orgs", "title": "Projects and organizations", "summary": "Plan work and manage teams on GitHub.", "minutes": 6, "file": "39-projects-and-orgs.md" },
+        { "id": "security", "title": "Security essentials", "summary": "Protect your account, your tokens, and your repositories.", "minutes": 7, "file": "40-security.md" }
+      ],
+      "quiz": [
+        {
+          "q": "Where do GitHub Actions workflow files live?",
+          "options": [
+            ".github/workflows/",
+            "actions/",
+            ".git/workflows/",
+            "workflows/ at the repository root"
+          ],
+          "answer": 0,
+          "explain": "GitHub reads YAML workflow files from .github/workflows in the repository."
+        },
+        {
+          "q": "What can GitHub Pages host?",
+          "options": [
+            "Static files such as HTML, CSS, and JavaScript",
+            "Any server-side application with a database",
+            "Only Jekyll sites",
+            "Private repositories on the free plan"
+          ],
+          "answer": 0,
+          "explain": "Pages serves static content only. Backend logic must live elsewhere."
+        },
+        {
+          "q": "How private is a secret gist?",
+          "options": [
+            "Unlisted but readable by anyone with the link",
+            "Encrypted and visible only to you",
+            "Visible only to your organization",
+            "Deleted after 24 hours"
+          ],
+          "answer": 0,
+          "explain": "Secret gists are hidden from search but not access-controlled. Never store credentials in them."
+        },
+        {
+          "q": "You accidentally pushed an API token. What is the first thing to do?",
+          "options": [
+            "Revoke and rotate the token immediately",
+            "Delete the file in a new commit",
+            "Add the file to .gitignore",
+            "Make the repository private"
+          ],
+          "answer": 0,
+          "explain": "Assume the token is already compromised. Rotate it first, then clean history if needed."
+        }
+      ]
+    }
+  ]
+}

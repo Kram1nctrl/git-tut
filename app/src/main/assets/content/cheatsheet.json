@@ -1,0 +1,113 @@
+{
+  "groups": [
+    {
+      "title": "Setup and configuration",
+      "items": [
+        { "cmd": "git config --global user.name 'Your Name'", "desc": "Set the name attached to your commits." },
+        { "cmd": "git config --global user.email 'you@example.com'", "desc": "Set the email attached to your commits." },
+        { "cmd": "git config --global init.defaultBranch main", "desc": "Use main as the first branch in new repositories." },
+        { "cmd": "git config --global --edit", "desc": "Open your global config file in an editor." },
+        { "cmd": "git config --list --show-origin", "desc": "Show every setting and which file it came from." },
+        { "cmd": "git config --global alias.lg 'log --oneline --graph --decorate --all'", "desc": "Create a shortcut for a compact history graph." }
+      ]
+    },
+    {
+      "title": "Create and connect",
+      "items": [
+        { "cmd": "git init", "desc": "Turn the current folder into a Git repository." },
+        { "cmd": "git clone <url>", "desc": "Copy a repository with its full history." },
+        { "cmd": "git clone --depth 1 <url>", "desc": "Shallow clone with only the latest commit." },
+        { "cmd": "git remote add origin <url>", "desc": "Connect a local repository to a remote URL." },
+        { "cmd": "git remote -v", "desc": "List remotes and their fetch and push URLs." },
+        { "cmd": "git remote set-url origin <url>", "desc": "Change where a remote points." }
+      ]
+    },
+    {
+      "title": "Everyday work",
+      "items": [
+        { "cmd": "git status -sb", "desc": "Compact status: branch, staged, unstaged, untracked." },
+        { "cmd": "git diff", "desc": "Show unstaged changes." },
+        { "cmd": "git diff --staged", "desc": "Show what the next commit would contain." },
+        { "cmd": "git add -A", "desc": "Stage all changes, including new and deleted files." },
+        { "cmd": "git add -p", "desc": "Stage selected chunks of a file." },
+        { "cmd": "git commit -m 'Message'", "desc": "Record the staged changes as a snapshot." },
+        { "cmd": "git commit --amend --no-edit", "desc": "Add staged changes to the last commit." },
+        { "cmd": "git restore --staged <file>", "desc": "Unstage a file but keep its edits." }
+      ]
+    },
+    {
+      "title": "Branches and merges",
+      "items": [
+        { "cmd": "git branch", "desc": "List local branches." },
+        { "cmd": "git switch -c feature/name", "desc": "Create a branch and switch to it." },
+        { "cmd": "git switch main", "desc": "Switch to an existing branch." },
+        { "cmd": "git merge feature/name", "desc": "Merge a branch into the current one." },
+        { "cmd": "git merge --abort", "desc": "Cancel an in-progress merge." },
+        { "cmd": "git branch -d feature/name", "desc": "Delete a fully merged branch." },
+        { "cmd": "git branch -m new-name", "desc": "Rename the current branch." },
+        { "cmd": "git push origin --delete feature/name", "desc": "Delete a branch on the remote." }
+      ]
+    },
+    {
+      "title": "Sync with GitHub",
+      "items": [
+        { "cmd": "git fetch --prune", "desc": "Download remote updates and remove stale branch references." },
+        { "cmd": "git pull", "desc": "Fetch and merge the upstream branch." },
+        { "cmd": "git pull --rebase", "desc": "Fetch and replay your commits on top of the remote." },
+        { "cmd": "git push -u origin main", "desc": "Push and set the upstream for future pushes." },
+        { "cmd": "git push --force-with-lease", "desc": "Force push only if nobody else pushed since your last fetch." },
+        { "cmd": "git branch -vv", "desc": "Show branches with upstream and ahead or behind counts." }
+      ]
+    },
+    {
+      "title": "Undo and rescue",
+      "items": [
+        { "cmd": "git restore <file>", "desc": "Discard unstaged edits in a file." },
+        { "cmd": "git reset --soft HEAD~1", "desc": "Undo the last commit, keeping changes staged." },
+        { "cmd": "git reset --hard HEAD", "desc": "Discard all uncommitted changes." },
+        { "cmd": "git revert <hash>", "desc": "Create a commit that undoes an earlier one." },
+        { "cmd": "git stash push -u -m 'note'", "desc": "Park tracked and untracked changes with a label." },
+        { "cmd": "git stash pop", "desc": "Reapply the latest stash and remove it from the list." },
+        { "cmd": "git reflog", "desc": "Show where HEAD has been, including lost commits." },
+        { "cmd": "git reset --hard HEAD@{1}", "desc": "Jump back to a previous reflog position." }
+      ]
+    },
+    {
+      "title": "Inspect history",
+      "items": [
+        { "cmd": "git log --oneline --graph --decorate --all", "desc": "Visual map of every branch and commit." },
+        { "cmd": "git show <hash>", "desc": "Show a commit's metadata and diff." },
+        { "cmd": "git blame <file>", "desc": "Show which commit last changed each line." },
+        { "cmd": "git log -S 'text'", "desc": "Find commits that added or removed a string." },
+        { "cmd": "git diff main..feature", "desc": "Compare two branches." },
+        { "cmd": "git log --follow -- <file>", "desc": "Follow a file across renames." }
+      ]
+    },
+    {
+      "title": "Rebase, cherry-pick, tags",
+      "items": [
+        { "cmd": "git rebase main", "desc": "Replay your branch commits on top of main." },
+        { "cmd": "git rebase -i HEAD~3", "desc": "Edit, squash, reorder, or drop the last three commits." },
+        { "cmd": "git rebase --continue", "desc": "Continue after resolving a rebase conflict." },
+        { "cmd": "git rebase --abort", "desc": "Cancel the rebase and return to the starting point." },
+        { "cmd": "git cherry-pick <hash>", "desc": "Copy a specific commit onto the current branch." },
+        { "cmd": "git tag -a v1.0.0 -m 'Release'", "desc": "Create an annotated release tag." },
+        { "cmd": "git push origin v1.0.0", "desc": "Push a single tag to the remote." },
+        { "cmd": "git push --tags", "desc": "Push all local tags." }
+      ]
+    },
+    {
+      "title": "GitHub CLI",
+      "items": [
+        { "cmd": "gh auth login", "desc": "Authenticate the GitHub CLI." },
+        { "cmd": "gh repo create name --public --source=. --push", "desc": "Create a repository and push the current project." },
+        { "cmd": "gh pr create --fill", "desc": "Open a pull request using your commit messages." },
+        { "cmd": "gh pr checkout 12", "desc": "Check out pull request 12 locally." },
+        { "cmd": "gh pr merge 12 --squash --delete-branch", "desc": "Squash-merge a pull request and delete its branch." },
+        { "cmd": "gh issue list --label bug", "desc": "List open issues with a label." },
+        { "cmd": "gh release create v1.0.0 --generate-notes", "desc": "Publish a release with generated notes." },
+        { "cmd": "gh run list", "desc": "List recent GitHub Actions runs." }
+      ]
+    }
+  ]
+}

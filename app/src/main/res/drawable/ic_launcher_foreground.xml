@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Git branch glyph inside the 72dp adaptive-icon safe zone. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- main branch line -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#F05133"
+        android:strokeWidth="6"
+        android:strokeLineCap="round"
+        android:pathData="M40,38 L40,70" />
+
+    <!-- branch line curving up to the right -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#F05133"
+        android:strokeWidth="6"
+        android:strokeLineCap="round"
+        android:pathData="M40,56 C40,42 52,32 62,32" />
+
+    <!-- commit nodes -->
+    <path
+        android:fillColor="#F05133"
+        android:pathData="M40,26m-7,0a7,7 0 1,0 14,0a7,7 0 1,0 -14,0" />
+    <path
+        android:fillColor="#F05133"
+        android:pathData="M40,82m-7,0a7,7 0 1,0 14,0a7,7 0 1,0 -14,0" />
+    <path
+        android:fillColor="#FCD9CE"
+        android:pathData="M68,32m-7,0a7,7 0 1,0 14,0a7,7 0 1,0 -14,0" />
+</vector>
